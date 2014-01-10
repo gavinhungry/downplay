@@ -1,1 +1,1 @@
-#html{overflow:hidden}#input{outline:2px solid green;position:fixed;top:0;left:0;width:50%;height:100%;padding:0}#output{outline:2px solid red;position:fixed;top:0;left:50%;width:50%;height:100%;padding:1em}
+*,::before,::after{box-sizing:border-box}#html{overflow:hidden}#input,#output{position:fixed;top:0;width:50%;height:100%;padding:1em}#input{left:0;border:0;outline:0;resize:none;font-family:monospace;font-size:11px}#output{left:50%;padding-top:0}
