@@ -1,7 +1,3 @@
-/**
- * shakedown.io
- */
-
 (function() {
   'use strict';
 

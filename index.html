@@ -17,10 +17,14 @@
   </head>
 
   <body>
-
     <script type='text/x-handlebars' id='index'>
       {{partial 'input'}}
       {{partial 'output'}}
+      <footer>
+        <span class='bold'>shakedown</span> is a simple Markdown editor
+        created by <a href='https://twitter.com/gavinhungry'>gavinhungry</a>.
+        Code on <a href='https://github.com/gavinhungry/shakedown'>GitHub</a>.
+      </footer>
     </script>
 
     <script type='text/x-handlebars' id='input'>
@@ -32,6 +36,5 @@
         {{format-markdown markdown}}
       </div>
     </script>
-
   </body>
 </html>

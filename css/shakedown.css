@@ -1,14 +1,25 @@
 /* frontenddevreactions.tumblr.com/post/50110341554 */
-*, *::before, *::after { box-sizing: border-box; }
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 #html {
   overflow: hidden;
 }
 
 body {
-  margin: 0;
   padding: 0;
   background: #DDD;
+}
+
+#input, #output, footer {
+  border: 1px solid #AAA;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 0 4px #BBB;
+  box-shadow: 0 0 4px #BBB;
 }
 
 #input, #output {
@@ -17,20 +28,17 @@ body {
   height: calc(100% - 64px);
   margin: 0;
   padding: 1em;
-  border-radius: 1px;
-  border: 1px solid #AAA;
-  box-shadow: 0 0 4px #BBB;
 }
 
 #input {
-  background: #FFF;
-  width: 40%;
   left: 8px;
+  width: 40%;
   outline: none;
   resize: none;
-  font-family: monospace;
-  font-size: 11px;
+  background: #FFF;
   color: #555;
+  font-size: 11px;
+  font-family: monospace;
 }
 
 #output {
@@ -39,8 +47,6 @@ body {
   overflow-y: auto;
   padding: 1em;
   padding-top: 0;
-
-  /* from gfm.css */
   background: #EEE;
   font-family: 'Ubuntu', sans-serif;
   font-size: 14px;
@@ -50,10 +56,36 @@ body {
 
 footer {
   position: fixed;
-  left: 0;
-  bottom: 0;
-  height: 48px;
-  width: 100%;
+  left: 8px;
+  bottom: 8px;
   overflow: hidden;
+  width: calc(100% - 16px);
+  height: 40px;
   padding: 8px;
+  background: #CDB;
+  border-color: #9A8;
+  color: #564;
+  font-size: 11px;
+  line-height: 24px;
+  text-align: center;
+  text-overflow: ellipsis;
+  text-shadow: 2px 2px 1px #BCA;
+  white-space: nowrap;
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+footer .bold {
+  font-weight: bold;
+}
+
+footer a {
+  color: #342;
+}
+
+footer a:hover {
+  color: #453;
 }
