@@ -1,1 +1,1 @@
-#input{border:2px solid green}#output{border:2px solid red}
+#input{outline:2px solid green;position:absolute;top:0;left:0;width:50%;height:100%;padding:0}#output{outline:2px solid red;position:absolute;top:0;left:50%;width:50%;height:100%}
