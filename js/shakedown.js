@@ -3,6 +3,16 @@
  */
 
 (function() {
+
+  marked.setOptions({ gfm: true });
+
+  Ember.Handlebars.helper('format-markdown', function(md) {
+    return new Ember.Handlebars.SafeString(marked(md));
+  });
+
+
+
+
   App = Ember.Application.create();
 
   var model = { markdown: '' };
