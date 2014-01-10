@@ -8,20 +8,24 @@
 body {
   margin: 0;
   padding: 0;
+  background: #DDD;
 }
 
 #input, #output {
   position: fixed;
-  top: 0;
-  height: 100%;
+  top: 8px;
+  height: calc(100% - 64px);
   margin: 0;
   padding: 1em;
+  border-radius: 1px;
+  border: 1px solid #AAA;
+  box-shadow: 0 0 4px #BBB;
 }
 
 #input {
+  background: #FFF;
   width: 40%;
-  left: 0;
-  border: none;
+  left: 8px;
   outline: none;
   resize: none;
   font-family: monospace;
@@ -30,8 +34,26 @@ body {
 }
 
 #output {
-  width: 60%;
-  left: 40%;
-  padding-top: 0;
+  width: calc(60% - 24px);
+  left: calc(40% + 16px);
   overflow-y: auto;
+  padding: 1em;
+  padding-top: 0;
+
+  /* from gfm.css */
+  background: #EEE;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 48px;
+  width: 100%;
+  overflow: hidden;
+  padding: 8px;
 }
