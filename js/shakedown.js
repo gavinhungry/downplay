@@ -5,7 +5,7 @@
 
     var init_nano = function() {
       setTimeout(function() {
-        $('#input, #output').nanoScroller({
+        $('#output').nanoScroller({
           alwaysVisible: true
         }).each(function() {
           // we gave the slider a 2px margin, so we must reduce its height
