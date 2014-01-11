@@ -6,6 +6,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width,user-scalable=no'>
 
+    <link rel='stylesheet' type='text/css' href='//cdnjs.cloudflare.com/ajax/libs/jquery.nanoscroller/0.7.4/nanoscroller.min.css'>
     <link rel='stylesheet' type='text/css' href='/css/shakedown.css'>
     <link rel='stylesheet' type='text/css' href='/css/gfm.css'>
 
@@ -13,6 +14,8 @@
     <script type='application/javascript' src='//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.3.0/handlebars.min.js'></script>
     <script type='application/javascript' src='//cdnjs.cloudflare.com/ajax/libs/ember.js/1.3.0/ember.min.js'></script>
     <script type='application/javascript' src='//cdnjs.cloudflare.com/ajax/libs/marked/0.2.9/marked.min.js'></script>
+    <script type='application/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery.nanoscroller/0.7.4/jquery.nanoscroller.min.js'></script>
+
     <script type='application/javascript' src='/js/shakedown.js'></script>
   </head>
 
@@ -28,12 +31,16 @@
     </script>
 
     <script type='text/x-handlebars' id='input'>
-      {{textarea autofocus='true' spellcheck='false' id='input' value=markdown}}
+      <div id='input' class='nano'>
+        {{textarea class='content' autofocus='true' spellcheck='false' value=markdown}}
+      </div>
     </script>
 
     <script type='text/x-handlebars' id='output'>
-      <div id='output'>
-        {{format-markdown markdown}}
+      <div id='output' class='nano'>
+        <div class='content'>
+          {{format-markdown markdown}}
+        </div>
       </div>
     </script>
   </body>
