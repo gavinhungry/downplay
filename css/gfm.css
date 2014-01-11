@@ -26,7 +26,6 @@ h6 {
   font-weight: normal;
 }
 
-br + br { display: none; }
 p { margin: 1em 0; }
 
 blockquote {

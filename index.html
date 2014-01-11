@@ -16,6 +16,7 @@
     <script type='application/javascript' src='//cdnjs.cloudflare.com/ajax/libs/marked/0.2.9/marked.min.js'></script>
     <script type='application/javascript' src='//cdnjs.cloudflare.com/ajax/libs/jquery.nanoscroller/0.7.4/jquery.nanoscroller.min.js'></script>
 
+    <script type='application/javascript' src='/js/jquery.autogrow-textarea.js'></script>
     <script type='application/javascript' src='/js/shakedown.js'></script>
   </head>
 
@@ -32,7 +33,9 @@
 
     <script type='text/x-handlebars' id='input'>
       <div id='input' class='nano'>
-        {{textarea class='content' autofocus='true' spellcheck='false' value=markdown}}
+        <div class='content'>
+          {{textarea autofocus='true' spellcheck='false' value=markdown}}
+        </div>
       </div>
     </script>
 

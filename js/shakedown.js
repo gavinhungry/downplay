@@ -37,6 +37,8 @@
         }, 0);
       };
 
+      init_nano();
+
       // re-init nanoScroller.js when content changes
       $(window).on('resize', init_nano);
       $input.children('.content').on('input paste', init_nano);
