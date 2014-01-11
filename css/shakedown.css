@@ -40,20 +40,6 @@ body {
   width: 40%;
 }
 
-#input textarea {
-  resize: none;
-  width: calc(100% + 16px);
-  margin: 0;
-  padding: 14px;
-  -moz-padding-end: 0;
-  outline: none;
-  border: none;
-  background: #FFF;
-  color: #555;
-  font-size: 11px;
-  font-family: monospace;
-}
-
 #output {
   width: calc(60% - 24px);
   left: calc(40% + 16px);
@@ -65,11 +51,9 @@ body {
 }
 
 #output .content {
-  padding: 21px;
-  padding-top: 7px;
+  padding: 2em;
+  padding-top: 1em;
 }
-
-#output br + br { display: none; }
 
 footer {
   position: fixed;
@@ -81,7 +65,8 @@ footer {
   background: #CDB;
   border-color: #9A8;
   color: #675;
-  font-size: 11px;
+  font-size: 12px;
+  font-family: monospace;
   line-height: 24px;
   text-align: center;
   text-overflow: ellipsis;
@@ -97,6 +82,7 @@ footer {
 footer a {
   color: #564;
   font-weight: bold;
+  text-decoration: none;
 }
 
 footer a:hover {
@@ -116,4 +102,15 @@ footer a:hover {
   border-radius: 2px;
   opacity: 0.85;
   margin: 2px;
+}
+
+.CodeMirror {
+  height: 100%;
+  color: #444;
+}
+
+.CodeMirror-scroll {
+  padding: 1em;
+  padding-right: 2em;
+  height: calc(100% - 2em);
 }

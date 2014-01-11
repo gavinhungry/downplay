@@ -1,84 +1,91 @@
-h1, h2, h3, h4, h5, h6 {
+.gfm h1,
+.gfm h2,
+.gfm h3,
+.gfm h4,
+.gfm h5,
+.gfm h6 {
   padding: 0;
   margin: 1em 0 0.25em;
   font-weight: bold;
 }
-
-h1 {
+.gfm h1 {
   font-size: 38px;
   border-bottom: 1px solid #CCC;
   margin-top: 0.25em;
 }
-
-h2 {
+.gfm h2 {
   font-size: 28px;
   border-bottom: 1px solid #DDD;
   margin-top: 0.25em;
 }
-
-h3 { font-size: 22px; }
-h4 { font-size: 18px; }
-h5 { font-size: 14px; }
-
-h6 {
+.gfm h3 {
+  font-size: 22px;
+}
+.gfm h4 {
+  font-size: 18px;
+}
+.gfm h5 {
+  font-size: 14px;
+}
+.gfm h6 {
   font-size: 14px;
   color: #666;
   font-weight: normal;
 }
-
-p { margin: 1em 0; }
-
-blockquote {
+.gfm br + br {
+  display: none;
+}
+.gfm p {
+  margin: 1em 0;
+}
+.gfm blockquote {
   padding-left: 1em;
   margin: 1em 0;
   border-left: 4px solid #CCC;
 }
-
-code {
+.gfm code {
   padding: 2px 5px;
   margin: 0 2px;
 }
-
-pre { padding: 8px 10px; }
-
-code, pre {
+.gfm pre {
+  padding: 8px 10px;
+}
+.gfm code,
+.gfm pre {
   background: #DFDFDF;
   border: 1px solid #BBB;
   border-radius: 2px;
   white-space: nowrap;
   font-size: 12px !important;
 }
-
-pre > code {
+.gfm pre > code {
   padding: 0;
   margin: 0;
   background: transparent;
   border: none;
   white-space: pre;
 }
-
-a, a code {
+.gfm a,
+.gfm a code {
   color: #4183C4;
   text-decoration: none;
 }
-
-a:hover, a code:hover {
+.gfm a:hover,
+.gfm a code:hover {
   text-decoration: underline;
 }
-
-table {
+.gfm table {
   padding: 0;
   margin: 10px 0 0;
   border-collapse: collapse;
 }
-
-table tr th, table tr td {
+.gfm table tr th,
+.gfm table tr td {
   padding: 6px 13px;
   margin: 0;
   border: 1px solid #CCC;
   text-align: left;
 }
-
-table tbody tr:nth-child(odd) {
+.gfm table tbody tr:nth-child(odd) {
   background: #F6F6F6;
 }
