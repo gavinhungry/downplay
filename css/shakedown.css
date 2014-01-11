@@ -27,7 +27,6 @@ body {
   top: 8px;
   height: calc(100% - 64px);
   margin: 0;
-  padding: 2px;
 }
 
 #input .content, #output .content {
