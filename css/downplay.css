@@ -35,6 +35,10 @@ body {
   padding: 0 8px;
 }
 
+#controls .control {
+  display: inline-block;
+}
+
 #input .content, #output .content {
   height: 100%;
   margin: 0;
@@ -42,13 +46,13 @@ body {
 
 #input {
   top: 48px;
-  height: calc(100% - 104px);
+  height: calc(100% - 56px);
 }
 
 #output {
   top: 8px;
   width: calc(60% - 24px);
-  height: calc(100% - 64px);
+  height: calc(100% - 16px);
   left: calc(40% + 16px);
   background: #EEE;
   font-family: 'Ubuntu', sans-serif;
@@ -60,39 +64,6 @@ body {
 #output .content {
   padding: 2em;
   padding-top: 1em;
-}
-
-footer {
-  left: 8px;
-  bottom: 8px;
-  width: calc(100% - 16px);
-  height: 40px;
-  padding: 8px;
-  background: #CDB;
-  border-color: #9A8;
-  color: #675;
-  font-size: 12px;
-  font-family: monospace;
-  line-height: 24px;
-  text-align: center;
-  text-overflow: ellipsis;
-  text-shadow: 1px 1px 2px #BCA;
-  white-space: nowrap;
-  cursor: default;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-footer a {
-  color: #564;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-footer a:hover {
-  color: #453;
 }
 
 .nano > .pane {
