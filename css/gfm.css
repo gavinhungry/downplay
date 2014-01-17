@@ -8,6 +8,12 @@
   margin: 1em 0 0.25em;
   font-weight: bold;
 }
+.gfm > h1:first-child { margin-top: 0; }
+.gfm > h2:first-child { margin-top: 0.125em; }
+.gfm > h3:first-child { margin-top: 0.25em; }
+.gfm > h4:first-child { margin-top: 0.375em; }
+.gfm > h5:first-child { margin-top: 0.5em; }
+.gfm > h6:first-child { margin-top: 0.625em; }
 .gfm h1 {
   font-size: 38px;
   border-bottom: 1px solid #CCC;

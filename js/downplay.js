@@ -1,9 +1,12 @@
 (function($) {
   'use strict';
 
-  var opts = {
+  var state = {
     html: false
   };
+
+  // HTML indentation level
+  var indent = 2;
 
   $(function() {
     var $input = $('#input');
@@ -34,7 +37,11 @@
       var markdown = cm.getValue();
 
       var html = marked(markdown)
-      if (opts.html) { html = _.escape(html).replace(/\n/g, '<br>'); }
+      if (state.html) {
+        html = _.escape(html_beautify(html, {
+          indent_size: indent
+        })).replace(/\n/g, '<br>');
+      }
 
       $html.html(html);
       nano();
@@ -47,9 +54,10 @@
 
     // controls
     $('#preview').on('click', function(e) {
-      opts.html = !opts.html;
-      $(this).toggleClass('active', opts.html);
-      $html.toggleClass('gfm', !opts.html);
+      state.html = !state.html;
+      $(this).toggleClass('active', state.html);
+      $html.toggleClass('gfm', !state.html);
+      $html.toggleClass('pre', state.html);
       update();
     });
 
