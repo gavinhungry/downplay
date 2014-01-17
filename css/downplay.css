@@ -15,7 +15,7 @@ body {
 }
 
 .right {
-  float: right;
+  float: right !important;
 }
 
 #controls, #input, #output, footer {
@@ -44,20 +44,40 @@ body {
 #controls {
   background: #E5E5E5;
   height: 40px;
-  user-select: none;
   -webkit-user-select: none;
-  padding: 0 16px;
+  -moz-user-select: none;
+  user-select: none;
+  padding: 7px;
 }
 
 #controls .control {
+  float: left;
   display: inline-block;
+  color: #555;
+  border: 1px solid transparent;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
   font-size: 11px;
+  line-height: 1em;
+  margin-right: 4px;
+  padding: 6px;
   cursor: pointer;
-  line-height: 39px;
+}
+
+#controls .control.right {
+  margin-right: 0;
+}
+
+#controls .control:hover {
+  color: #333;
+  background: #DDD;
+  border-color: #BBB;
 }
 
 #controls .control.active {
-  font-weight: bold;
+  color: #222;
+  background: #BBB;
+  border-color: #999;
 }
 
 #input .content, #output .content {
