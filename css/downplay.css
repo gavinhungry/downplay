@@ -14,7 +14,9 @@ body {
   background: #DDD;
 }
 
-#input, #output, footer {
+#controls, #input, #output, footer {
+  position: fixed;
+  margin: 0;
   border: 1px solid #AAA;
   -webkit-border-radius: 2px;
   border-radius: 2px;
@@ -22,11 +24,15 @@ body {
   box-shadow: 0 0 4px #BBB;
 }
 
-#input, #output {
-  position: fixed;
-  top: 8px;
-  height: calc(100% - 64px);
-  margin: 0;
+#controls, #input {
+  width: 40%;
+  left: 8px;
+}
+
+#controls {
+  height: 32px;
+  line-height: 32px;
+  padding: 0 8px;
 }
 
 #input .content, #output .content {
@@ -35,12 +41,14 @@ body {
 }
 
 #input {
-  left: 8px;
-  width: 40%;
+  top: 48px;
+  height: calc(100% - 104px);
 }
 
 #output {
+  top: 8px;
   width: calc(60% - 24px);
+  height: calc(100% - 64px);
   left: calc(40% + 16px);
   background: #EEE;
   font-family: 'Ubuntu', sans-serif;
@@ -55,7 +63,6 @@ body {
 }
 
 footer {
-  position: fixed;
   left: 8px;
   bottom: 8px;
   width: calc(100% - 16px);
