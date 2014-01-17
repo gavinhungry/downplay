@@ -1,30 +1,58 @@
 (function($) {
   'use strict';
 
-  var init_nano = function() {
-    setTimeout(function() {
-      $('#output').nanoScroller({
-        alwaysVisible: true
-      }).each(function() {
-        // we gave the slider a 2px margin, so we must reduce its height
-        var slider = this.nanoscroller.sliderHeight - 4;
-        $(this).find('> .pane > .slider').height(slider);
-      });
-    }, 0)
+  var opts = {
+    html: false
   };
 
   $(function() {
-    CodeMirror.fromTextArea($('#markdown')[0], {
+    var $input = $('#input');
+    var $markdown = $('#markdown');
+    var $output = $('#output');
+    var $html = $('#html');
+
+    // init a nanoScroller
+    var nano = function() {
+      setTimeout(function() {
+        $output.nanoScroller({
+          alwaysVisible: true
+        }).each(function() {
+          // we gave the slider a 2px margin, so we must reduce its height
+          var slider = this.nanoscroller.sliderHeight - 4;
+          $(this).find('> .pane > .slider').height(slider);
+        });
+      }, 0)
+    };
+
+    // CodeMirror
+    var cm = CodeMirror.fromTextArea($markdown[0], {
       lineWrapping: true
-    }).on('change', function(cm) {
-      var markdown = cm.getValue();
-      $('#html').html(marked(markdown));
-      init_nano();
     });
 
-    init_nano();
+    // update output from Markdown
+    var update = function() {
+      var markdown = cm.getValue();
 
-    $(window).on('resize', init_nano);
+      var html = marked(markdown)
+      if (opts.html) { html = _.escape(html).replace(/\n/g, '<br>'); }
+
+      $html.html(html);
+      nano();
+    };
+
+    cm.on('change', update);
+
+    nano();
+    $(window).on('resize', nano);
+
+    // controls
+    $('#preview').on('click', function(e) {
+      opts.html = !opts.html;
+      $(this).toggleClass('active', opts.html);
+      $html.toggleClass('gfm', !opts.html);
+      update();
+    });
+
   });
 
 })(jQuery);

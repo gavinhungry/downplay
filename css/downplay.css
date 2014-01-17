@@ -14,6 +14,10 @@ body {
   background: #DDD;
 }
 
+.right {
+  float: right;
+}
+
 #controls, #input, #output, footer {
   position: fixed;
   margin: 0;
@@ -24,19 +28,36 @@ body {
   box-shadow: 0 0 4px #BBB;
 }
 
+#input .CodeMirror, #output {
+  background: #FAFAFA;
+}
+
 #controls, #input {
-  width: 40%;
-  left: 8px;
+  top: 8px;
+}
+
+#controls, #output {
+  width: calc(60% - 24px);
+  left: calc(40% + 16px);
 }
 
 #controls {
-  height: 32px;
-  line-height: 32px;
-  padding: 0 8px;
+  background: #E5E5E5;
+  height: 40px;
+  user-select: none;
+  -webkit-user-select: none;
+  padding: 0 16px;
 }
 
 #controls .control {
   display: inline-block;
+  font-size: 11px;
+  cursor: pointer;
+  line-height: 39px;
+}
+
+#controls .control.active {
+  font-weight: bold;
 }
 
 #input .content, #output .content {
@@ -45,16 +66,14 @@ body {
 }
 
 #input {
-  top: 48px;
-  height: calc(100% - 56px);
+  left: 8px;
+  height: calc(100% - 16px);
+  width: 40%;
 }
 
 #output {
-  top: 8px;
-  width: calc(60% - 24px);
-  height: calc(100% - 16px);
-  left: calc(40% + 16px);
-  background: #EEE;
+  top: 56px;
+  height: calc(100% - 64px);
   font-family: 'Ubuntu', sans-serif;
   font-size: 14px;
   line-height: 1.5;
@@ -84,6 +103,7 @@ body {
 .CodeMirror {
   height: 100%;
   color: #444;
+  cursor: text;
 }
 
 .CodeMirror-scroll {
