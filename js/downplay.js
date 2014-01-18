@@ -13,7 +13,7 @@ window.downplay = window.downplay || (function($) {
   var html_opts = { indent_size: 2 };
   var state = { html: false };
 
-  var $input, $markdown, $output, $html, $preview;
+  var $input, $markdown, $output, $html, $preview, $autosave;
   var init = false;
 
   var try_json = function(json) {
@@ -33,6 +33,7 @@ window.downplay = window.downplay || (function($) {
     $html = $('#html');
 
     $preview = $('#preview');
+    $autosave = $('#autosave');
 
     // CodeMirror
     downplay.cm = CodeMirror.fromTextArea($markdown[0], {
@@ -50,6 +51,11 @@ window.downplay = window.downplay || (function($) {
       downplay.update();
     });
 
+    $autosave.on('click', function(e) {
+      state.autosave = !state.autosave;
+      downplay.update();
+    });
+
     // nanoScroller
     downplay.nano();
     $(window).on('resize', downplay.nano);
@@ -59,6 +65,8 @@ window.downplay = window.downplay || (function($) {
 
   downplay.state = function() {
     $preview.toggleClass('active', state.html);
+    $autosave.toggleClass('active', state.autosave);
+
     $html.toggleClass('gfm', !state.html);
     $html.toggleClass('pre', state.html);
   };
@@ -87,8 +95,11 @@ window.downplay = window.downplay || (function($) {
     var markdown = downplay.cm.getValue();
 
     // cache markdown in local storage
-    localStorage.setItem('cursor', JSON.stringify(downplay.cm.getCursor()));
-    localStorage.setItem('markdown', markdown);
+    if (state.autosave) {
+      localStorage.setItem('cursor', JSON.stringify(downplay.cm.getCursor()));
+      localStorage.setItem('markdown', markdown);
+    }
+
     localStorage.setItem('state', JSON.stringify(state));
   }, 0);
 
