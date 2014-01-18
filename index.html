@@ -22,8 +22,14 @@
 
   <body>
     <div id='controls'>
-      <div id='preview' class='control'>HTML</div>
-      <div id='autosave' class='control'>Autosave</div>
+      <div id='html' class='control toggle'>HTML</div>
+      <div id='autosave' class='control toggle'>Autosave</div>
+
+      <div class='right'>
+        <div id='reference' class='control topic'>Reference</div>
+        <div id='help' class='control topic'>Help</div>
+        <div id='about' class='control topic'>About</div>
+      </div>
     </div>
 
     <div id='input'>
@@ -34,7 +40,7 @@
 
     <div id='output' class='nano'>
       <div class='content'>
-        <div id='html' class='gfm'></div>
+        <div id='contents' class='gfm'></div>
       </div>
     </div>
   </body>

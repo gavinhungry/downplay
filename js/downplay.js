@@ -11,12 +11,13 @@ window.downplay = window.downplay || (function($) {
 
   var nano_opts = { alwaysVisible: true };
   var html_opts = { indent_size: 2 };
-  var state = {
+  var current_topic;
+  var opts = {
     html: false,
     autosave: false
   };
 
-  var $input, $markdown, $output, $html, $preview, $autosave;
+  var $input, $markdown, $output, $contents, $toggles, $topics;
   var init = false;
 
   var try_json = function(json) {
@@ -33,10 +34,10 @@ window.downplay = window.downplay || (function($) {
     $input = $('#input');
     $markdown = $('#markdown');
     $output = $('#output');
-    $html = $('#html');
+    $contents = $('#contents');
 
-    $preview = $('#preview');
-    $autosave = $('#autosave');
+    $toggles = $('.toggle');
+    $topics = $('.topic');
 
     // CodeMirror
     downplay.cm = CodeMirror.fromTextArea($markdown[0], {
@@ -48,16 +49,8 @@ window.downplay = window.downplay || (function($) {
     downplay.cm.on('change', downplay.update);
     downplay.cm.on('cursorActivity', downplay.save);
 
-    // controls
-    $preview.on('click', function(e) {
-      state.html = !state.html;
-      downplay.update();
-    });
-
-    $autosave.on('click', function(e) {
-      state.autosave = !state.autosave;
-      downplay.update();
-    });
+    downplay.controls();
+    downplay.topics();
 
     // nanoScroller
     downplay.nano();
@@ -66,12 +59,41 @@ window.downplay = window.downplay || (function($) {
     init = true;
   };
 
-  downplay.state = function() {
-    $preview.toggleClass('active', state.html);
-    $autosave.toggleClass('active', state.autosave);
+  /**
+   *
+   */
+  downplay.controls = function() {
+    $toggles.on('click', function(e) {
+      var toggle = $(this).attr('id');
+      opts[toggle] = !opts[toggle];
+      downplay.update();
+    });
+  };
 
-    $html.toggleClass('gfm', !state.html);
-    $html.toggleClass('pre', state.html);
+  /**
+   *
+   */
+  downplay.topics = function() {
+    $topics.on('click', function() {
+      var topic = $(this).attr('id');
+      current_topic = (topic === current_topic) ? null : topic;
+
+      $topics.not(this).removeClass('active');
+      $(this).toggleClass('active', topic === current_topic);
+    });
+  };
+
+  /**
+   *
+   */
+  downplay.opts = function() {
+    $toggles.each(function() {
+      var toggle = $(this).attr('id');
+      $(this).toggleClass('active', opts[toggle]);
+    });
+
+    $contents.toggleClass('gfm', !opts.html);
+    $contents.toggleClass('pre', opts.html);
   };
 
   /**
@@ -80,45 +102,45 @@ window.downplay = window.downplay || (function($) {
   downplay.update = function() {
     var markdown = downplay.cm.getValue();
     downplay.save();
-    downplay.state();
+    downplay.opts();
 
     var html = marked(markdown);
-    if (state.html) {
+    if (opts.html) {
       html = _.escape(html_beautify(html, html_opts)).replace(/\n\r?/g, '<br>');
     }
 
-    $html.html(html);
+    $contents.html(html);
     downplay.nano();
   };
 
   /**
-   * save state to local storage
+   * save opts to local storage
    */
   downplay.save = _.debounce(function() {
     var markdown = downplay.cm.getValue();
 
     // cache markdown in local storage
-    if (state.autosave) {
+    if (opts.autosave) {
       localStorage.setItem('cursor', JSON.stringify(downplay.cm.getCursor()));
       localStorage.setItem('markdown', markdown);
     }
 
-    localStorage.setItem('state', JSON.stringify(state));
+    localStorage.setItem('opts', JSON.stringify(opts));
   }, 0);
 
   /**
-   * load state from local storage
+   * load opts from local storage
    */
   downplay.load = function() {
     var markdown = localStorage.getItem('markdown');
     var cursor = try_json(localStorage.getItem('cursor'));
-    var cache = try_json(localStorage.getItem('state'));
+    var cache = try_json(localStorage.getItem('opts'));
 
     if (markdown) { downplay.cm.setValue(markdown); }
     if (cursor) { downplay.cm.setCursor(cursor); }
     if (cache) {
-      state = cache;
-      downplay.state();
+      opts = cache;
+      downplay.opts();
     }
 
     downplay.update();
