@@ -6,12 +6,16 @@ window.downplay = window.downplay || (function($) {
   // worst polyfill ever
   var localStorage = window.localStorage || {
     getItem: function(){},
-    setItem: function(){}
+    setItem: function(){},
+    removeItem: function(){}
   };
 
   var nano_opts = { alwaysVisible: true };
   var html_opts = { indent_size: 2 };
+
+  var _markdown = '';
   var current_topic;
+  var no_save = false;
   var opts = {
     html: false,
     autosave: false
@@ -80,6 +84,16 @@ window.downplay = window.downplay || (function($) {
 
       $topics.not(this).removeClass('active');
       $(this).toggleClass('active', topic === current_topic);
+
+      if (current_topic) {
+        no_save = true;
+
+        var markdown = $('#' + current_topic + '-md').text().trim();
+        downplay.cm.setValue(markdown);
+      } else {
+        no_save = false;
+        downplay.restore();
+      }
     });
   };
 
@@ -120,9 +134,18 @@ window.downplay = window.downplay || (function($) {
     var markdown = downplay.cm.getValue();
 
     // cache markdown in local storage
-    if (opts.autosave) {
-      localStorage.setItem('cursor', JSON.stringify(downplay.cm.getCursor()));
-      localStorage.setItem('markdown', markdown);
+    if (!no_save) {
+      _markdown = markdown;
+
+      if (opts.autosave) {
+        localStorage.setItem('cursor', JSON.stringify(downplay.cm.getCursor()));
+        localStorage.setItem('markdown', _markdown);
+      }
+    }
+
+    if (!opts.autosave) {
+      localStorage.removeItem('cursor');
+      localStorage.removeItem('markdown');
     }
 
     localStorage.setItem('opts', JSON.stringify(opts));
@@ -132,11 +155,11 @@ window.downplay = window.downplay || (function($) {
    * load opts from local storage
    */
   downplay.load = function() {
-    var markdown = localStorage.getItem('markdown');
+    _markdown = localStorage.getItem('markdown');
     var cursor = try_json(localStorage.getItem('cursor'));
     var cache = try_json(localStorage.getItem('opts'));
 
-    if (markdown) { downplay.cm.setValue(markdown); }
+    if (_markdown) { downplay.cm.setValue(_markdown); }
     if (cursor) { downplay.cm.setCursor(cursor); }
     if (cache) {
       opts = cache;
@@ -144,6 +167,13 @@ window.downplay = window.downplay || (function($) {
     }
 
     downplay.update();
+  };
+
+  /**
+   *
+   */
+  downplay.restore = function() {
+    downplay.cm.setValue(_markdown);
   };
 
   /**
