@@ -15,7 +15,6 @@ window.downplay = window.downplay || (function($) {
 
   var _markdown = '';
   var current_topic;
-  var no_save = false;
   var opts = {
     html: false,
     scroll: false,
@@ -87,12 +86,12 @@ window.downplay = window.downplay || (function($) {
       $(this).toggleClass('active', topic === current_topic);
 
       if (current_topic) {
-        no_save = true;
+        downplay.cm.setOption('readOnly', true);
 
         var markdown = $('#' + current_topic + '-md').text().trim();
         downplay.cm.setValue(markdown);
       } else {
-        no_save = false;
+        downplay.cm.setOption('readOnly', false);
         downplay.restore();
       }
     });
@@ -135,7 +134,7 @@ window.downplay = window.downplay || (function($) {
     var markdown = downplay.cm.getValue();
 
     // cache markdown in local storage
-    if (!no_save) {
+    if (!downplay.cm.getOption('readOnly')) {
       _markdown = markdown;
 
       if (opts.autosave) {
