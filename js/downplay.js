@@ -11,7 +11,10 @@ window.downplay = window.downplay || (function($) {
 
   var nano_opts = { alwaysVisible: true };
   var html_opts = { indent_size: 2 };
-  var state = { html: false };
+  var state = {
+    html: false,
+    autosave: false
+  };
 
   var $input, $markdown, $output, $html, $preview, $autosave;
   var init = false;
