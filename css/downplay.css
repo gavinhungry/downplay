@@ -141,3 +141,15 @@ body {
   padding-right: 2em;
   height: calc(100% - 2em);
 }
+
+@media (max-width: 480px) {
+  #input {
+    top: 56px;
+    height: calc(100% - 64px);
+  }
+
+  #controls {
+    left: 8px;
+    width: calc(100% - 16px);
+  }
+}
