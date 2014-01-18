@@ -182,6 +182,8 @@ window.downplay = window.downplay || (function($) {
   downplay.nano = function() {
     setTimeout(function() {
       $output.nanoScroller(nano_opts).each(function() {
+        if (opts.scroll) { $(this).nanoScroller({ scroll: 'bottom' }); }
+
         // we gave the slider a 2px margin, so we must reduce its height
         var slider = this.nanoscroller.sliderHeight - 4;
         $(this).find('> .pane > .slider').height(slider);
