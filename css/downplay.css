@@ -12,6 +12,7 @@
 body {
   padding: 0;
   background: #DDD;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .right {
@@ -100,7 +101,6 @@ body {
 #output {
   top: 56px;
   height: calc(100% - 64px);
-  font-family: 'Ubuntu', sans-serif;
   font-size: 14px;
   line-height: 1.5;
   color: #333;
