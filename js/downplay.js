@@ -86,13 +86,15 @@ window.downplay = window.downplay || (function($) {
       $(this).toggleClass('active', topic === current_topic);
 
       if (current_topic) {
-        downplay.cm.setOption('readOnly', true);
-
-        var markdown = $('#' + current_topic + '-md').text().trim();
-        downplay.cm.setValue(markdown);
+        var file = $(this).attr('data-md-file');
+        var md_m = $.get(file) || $('#' + current_topic + '-md').text().trim();
+        $.when(md_m).done(function(markdown) {
+          downplay.cm.setOption('readOnly', true);
+          downplay.cm.setValue(markdown);
+        });
       } else {
         downplay.cm.setOption('readOnly', false);
-        downplay.restore();
+        downplay.cm.setValue(_markdown);
       }
     });
   };
@@ -167,13 +169,6 @@ window.downplay = window.downplay || (function($) {
     }
 
     downplay.update();
-  };
-
-  /**
-   *
-   */
-  downplay.restore = function() {
-    downplay.cm.setValue(_markdown);
   };
 
   /**
