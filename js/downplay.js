@@ -24,6 +24,14 @@ window.downplay = window.downplay || (function($) {
   var $input, $markdown, $output, $contents, $toggles, $topics;
   var init = false;
 
+  var get_cache = {};
+  var cached_get = function(uri) {
+    if (!uri) { return ''; }
+    return get_cache[uri] || $.get(uri).done(function(data) {
+      get_cache[uri] = data;
+    });
+  };
+
   var try_json = function(json) {
     try {
       var obj = JSON.parse(json);
@@ -87,7 +95,7 @@ window.downplay = window.downplay || (function($) {
 
       if (current_topic) {
         var file = $(this).attr('data-md-file');
-        var md_m = $.get(file) || $('#' + current_topic + '-md').text().trim();
+        var md_m = cached_get(file);
         $.when(md_m).done(function(markdown) {
           downplay.cm.setOption('readOnly', true);
           downplay.cm.setValue(markdown);

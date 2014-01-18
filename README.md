@@ -1,5 +1,5 @@
-About Downplay!!!!
-==============
+Downplay
+========
 Downplay is a simple [Markdown](http://daringfireball.net/projects/markdown/)
 ([GFM](https://help.github.com/articles/github-flavored-markdown)) editor
 created by [gavinhungry](https://twitter.com/gavinhungry).
