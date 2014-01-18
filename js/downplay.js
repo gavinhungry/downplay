@@ -18,6 +18,7 @@ window.downplay = window.downplay || (function($) {
   var no_save = false;
   var opts = {
     html: false,
+    scroll: false,
     autosave: false
   };
 
