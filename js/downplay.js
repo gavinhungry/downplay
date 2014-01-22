@@ -53,7 +53,14 @@ window.downplay = window.downplay || (function($) {
 
     // CodeMirror
     downplay.cm = CodeMirror.fromTextArea($markdown[0], {
-      lineWrapping: true
+      lineWrapping: true,
+      tabSize: 2,
+      extraKeys: {
+        Tab: function(cm) {
+          var spaces = Array(cm.getOption('tabSize') + 1).join(' ');
+          cm.replaceSelection(spaces, 'end');
+        }
+      }
     });
 
     // cache
