@@ -54,7 +54,7 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-  padding: 7px;
+  padding: 2px;
 }
 
 #controls .control {
@@ -62,16 +62,14 @@ body {
   display: inline-block;
   color: #555;
   border: 1px solid transparent;
-  -webkit-border-radius: 1px;
-  border-radius: 1px;
   font-size: 11px;
   line-height: 1em;
-  margin-right: 4px;
-  padding: 6px;
+  margin-right: 2px;
+  padding: 10px 6px 11px;
   cursor: pointer;
 }
 
-#controls .control.right {
+#controls .right .control:last-child {
   margin-right: 0;
 }
 
@@ -82,7 +80,7 @@ body {
 }
 
 #controls .control.active {
-  color: #222;
+  color: #444;
   background: #BBB;
   border-color: #999;
 }
@@ -147,7 +145,15 @@ body {
 @media (max-width: 480px) {
   #input {
     top: 56px;
-    height: calc(100% - 64px);
+    height: calc(50% - 64px);
+    width: calc(100% - 16px);
+  }
+
+  #output {
+    top: 50%;
+    left: 8px;
+    width: calc(100% - 16px);
+    height: calc(50% - 8px);
   }
 
   #controls {
