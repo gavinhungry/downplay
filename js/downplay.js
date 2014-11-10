@@ -10,7 +10,6 @@ window.downplay = window.downplay || (function($) {
     removeItem: function(){}
   };
 
-  var nano_opts = { alwaysVisible: true };
   var html_opts = { indent_size: 2 };
 
   var _markdown = '';
@@ -70,10 +69,6 @@ window.downplay = window.downplay || (function($) {
 
     downplay.controls();
     downplay.topics();
-
-    // nanoScroller
-    downplay.nano();
-    $(window).on('resize', downplay.nano);
 
     init = true;
   };
@@ -141,7 +136,10 @@ window.downplay = window.downplay || (function($) {
     }
 
     $contents.html(html);
-    downplay.nano();
+
+    if (opts.scroll) {
+      $output.scrollTop($contents.height());
+    }
   };
 
   /**
@@ -184,21 +182,6 @@ window.downplay = window.downplay || (function($) {
     }
 
     downplay.update();
-  };
-
-  /**
-   * re(init) nanoScroller
-   */
-  downplay.nano = function() {
-    setTimeout(function() {
-      $output.nanoScroller(nano_opts).each(function() {
-        if (opts.scroll) { $(this).nanoScroller({ scroll: 'bottom' }); }
-
-        // we gave the slider a 2px margin, so we must reduce its height
-        var slider = this.nanoscroller.sliderHeight - 4;
-        $(this).find('> .pane > .slider').height(slider);
-      });
-    }, 0)
   };
 
   $(downplay.init);

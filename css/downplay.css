@@ -48,6 +48,10 @@ body {
   left: calc(40% + 16px);
 }
 
+#markdown, #output {
+  overflow: auto;
+}
+
 #controls {
   background: #E5E5E5;
   height: 40px;
@@ -85,11 +89,6 @@ body {
   border-color: #999;
 }
 
-#input .content, #output .content {
-  height: 100%;
-  margin: 0;
-}
-
 #input {
   left: 8px;
   height: calc(100% - 16px);
@@ -110,21 +109,6 @@ body {
 
 #contents.gfm {
   padding-top: 1em;
-}
-
-.nano > .pane {
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  background: rgba(0,0,0, 0.125);
-  width: 14px;
-  padding-bottom: 10px;
-}
-
-.nano > .pane > .slider {
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  opacity: 0.85;
-  margin: 2px;
 }
 
 .CodeMirror {
