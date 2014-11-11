@@ -52,6 +52,8 @@ window.downplay = window.downplay || (function($) {
 
     // CodeMirror
     downplay.cm = CodeMirror.fromTextArea($markdown[0], {
+      mode: 'gfm',
+      theme: 'downplay',
       lineWrapping: true,
       tabSize: 2,
       extraKeys: {

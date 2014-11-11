@@ -58,7 +58,7 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-  padding: 4px;
+  padding: 5px;
 }
 
 #controls .control {
@@ -70,8 +70,8 @@ body {
   border-radius: 1px;
   font-size: 11px;
   line-height: 1em;
-  margin-right: 4px;
-  padding: 8px 6px 9px;
+  margin-right: 5px;
+  padding: 7px 6px 8px;
   cursor: pointer;
   -webkit-transition: background 50ms, border 50ms;
   transition: background 50ms, border 50ms;
@@ -88,7 +88,7 @@ body {
 }
 
 #controls .control:hover:active {
-  padding: 9px 6px 8px;
+  padding: 8px 6px 7px;
 }
 
 #controls .control.active {
@@ -121,7 +121,13 @@ body {
   padding-top: 1em;
 }
 
-.CodeMirror {
+.CodeMirror-scroll {
+  padding: 1em;
+  padding-right: 2em;
+  height: calc(100% - 2em);
+}
+
+.cm-s-downplay.CodeMirror {
   height: 100%;
   color: #444;
   font-size: 11px;
@@ -130,11 +136,12 @@ body {
   cursor: text;
 }
 
-.CodeMirror-scroll {
-  padding: 1em;
-  padding-right: 2em;
-  height: calc(100% - 2em);
-}
+.cm-s-downplay .cm-comment { color: #75787B; }
+.cm-s-downplay .cm-keyword, .cm-s-downplay .cm-property { color: #1D75B3; }
+.cm-s-downplay .cm-atom,.cm-s-downplay .cm-number { color: #75438A; }
+.cm-s-downplay .cm-node,.cm-s-downplay .cm-tag { color: #9C3328; }
+.cm-s-downplay .cm-string { color: #B35E14; }
+.cm-s-downplay .cm-variable,.cm-s-downplay .cm-qualifier { color: #047D65; }
 
 @media (max-width: 480px) {
   #input {
