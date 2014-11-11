@@ -11,7 +11,7 @@ html {
 
 body {
   padding: 0;
-  background: #DDD;
+  background: #CCC;
   font-family: 'Ubuntu', sans-serif;
 }
 
@@ -28,11 +28,11 @@ body {
 #controls, #input, #output {
   position: fixed;
   margin: 0;
-  border: 1px solid #AAA;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  -webkit-box-shadow: 0 0 4px #BBB;
-  box-shadow: 0 0 4px #BBB;
+  border: 1px solid #999;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+  -webkit-box-shadow: 0 0 2px #AAA;
+  box-shadow: 0 0 2px #AAA;
 }
 
 #input .CodeMirror, #output {
@@ -58,19 +58,23 @@ body {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-  padding: 2px;
+  padding: 4px;
 }
 
 #controls .control {
   float: left;
   display: inline-block;
-  color: #555;
+  color: #666;
   border: 1px solid transparent;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
   font-size: 11px;
   line-height: 1em;
-  margin-right: 2px;
-  padding: 10px 6px 11px;
+  margin-right: 4px;
+  padding: 8px 6px 9px;
   cursor: pointer;
+  -webkit-transition: background 50ms, border 50ms;
+  transition: background 50ms, border 50ms;
 }
 
 #controls .right .control:last-child {
@@ -78,15 +82,21 @@ body {
 }
 
 #controls .control:hover {
-  color: #333;
-  background: #DDD;
-  border-color: #CCC;
+  color: #666;
+  background: #D5D5D5;
+  border-color: #C2C2C2;
+}
+
+#controls .control:hover:active {
+  padding: 9px 6px 8px;
 }
 
 #controls .control.active {
-  color: #444;
-  background: #BBB;
+  color: #555;
+  background: #C0C0C0;
   border-color: #999;
+  -webkit-box-shadow: 0 0 2px #CCC;
+  box-shadow: 0 0 2px #CCC;
 }
 
 #input {
