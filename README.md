@@ -18,5 +18,5 @@ Options
 
 License
 -------
-Downplay is released under the terms of the [MIT license](http://tldrlegal.com/license/mit-license).
+Released under the terms of the [MIT license](http://tldrlegal.com/license/mit-license).
 All code is available on [GitHub](https://github.com/gavinhungry/downplay).
