@@ -23,7 +23,7 @@ window.downplay = window.downplay || (function($) {
   var minInputWidth = 200;
   var minOutputWidth = 300;
 
-  var $input, $markdown, $output, $contents, $toggles, $topics;
+  var $body, $input, $markdown, $output, $contents, $toggles, $topics;
   var init = false;
 
   var get_cache = {};
@@ -45,6 +45,7 @@ window.downplay = window.downplay || (function($) {
     if (init) { return; }
 
     // cached elements
+    $body = $('body');
     $input = $('#input');
     $markdown = $('#markdown');
     $output = $('#output');
@@ -74,7 +75,11 @@ window.downplay = window.downplay || (function($) {
 
     downplay.controls();
     downplay.topics();
-    downplay.resizer();
+    // downplay.resizer();
+
+    $('#print').on('click', function(e) {
+      downplay.print();
+    });
 
     init = true;
   };
@@ -255,6 +260,17 @@ window.downplay = window.downplay || (function($) {
     }
 
     downplay.update();
+  };
+
+  /**
+   *
+   */
+  downplay.print = function() {
+    $body.addClass('printing').append($contents);
+    window.print();
+
+    $output.append($contents);
+    $body.removeClass('printing');
   };
 
   $(downplay.init);
