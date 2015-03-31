@@ -75,7 +75,6 @@ window.downplay = window.downplay || (function($) {
 
     downplay.controls();
     downplay.topics();
-    // downplay.resizer();
 
     $('#print').on('click', function(e) {
       downplay.print();
@@ -118,73 +117,6 @@ window.downplay = window.downplay || (function($) {
         downplay.cm.setValue(_markdown);
       }
     });
-  };
-
-  /**
-   *
-   */
-  downplay.resizer = function() {
-    var $input = $('#input');
-    var $output = $('#output');
-    var $controls = $('#controls');
-    var $resizer = $('#resizer').removeClass('active');
-
-    var origX = 0;
-    var origY = 0;
-    var origInputWidth = 0;
-    var origOutputWidth = 0;
-
-    $resizer.on('mousedown', function(e) {
-      e.preventDefault();
-      origX = e.clientX;
-      origY = e.clientY;
-
-      origInputWidth = $input.width();
-      origOutputWidth = $output.width();
-
-      $resizer.addClass('active');
-      downplay.cover(true);
-    });
-
-    $(document).on('mousemove', function(e) {
-      if (!$resizer.hasClass('active')) { return; }
-
-      var deltaX = e.clientX - origX;
-      var deltaY = e.clientY - origY;
-
-      var newInputWidth = origInputWidth + deltaX;
-      var newOutputWidth = origOutputWidth - deltaX;
-
-      if (newInputWidth < minInputWidth) {
-        newOutputWidth += newInputWidth - minInputWidth;
-        newInputWidth = minInputWidth;
-      }
-
-      if (newOutputWidth < minOutputWidth) {
-        newInputWidth += newOutputWidth - minOutputWidth;
-        newOutputWidth = minOutputWidth;
-      }
-
-      $input.width(newInputWidth);
-      $output.width(newOutputWidth);
-      $controls.width(newOutputWidth - 10);
-      $resizer.css('left', newInputWidth + 13);
-
-      downplay.cm.replaceRange(' ', { line: 0, ch: 0 });
-      downplay.cm.replaceRange('',  { line: 0, ch: 0 }, { line: 0, ch: 1 });
-    });
-
-    $(document).on('mouseup', function(e) {
-      $resizer.removeClass('active');
-      downplay.cover(false);
-    });
-  };
-
-  /**
-   *
-   */
-  downplay.cover = function(show) {
-    $('#cover').toggleClass('visible', !!show);
   };
 
   /**

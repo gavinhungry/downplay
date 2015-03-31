@@ -113,41 +113,6 @@ body.printing #downplay {
   width: 40%;
 }
 
-#resizer {
-  background: #AAA;
-  position: absolute;
-  left: calc(40% + 11px);
-  width: 2px;
-  height: calc(100% - 16px);
-  cursor: ew-resize;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-}
-
-#resizer.active {
-  background: #888;
-}
-
-#cover {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  cursor: default;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
-  cursor: ew-resize;
-}
-
-#cover.visible {
-  display: block;
-}
-
 #output {
   top: 48px;
   height: calc(100% - 52px);
@@ -191,10 +156,6 @@ body.printing #downplay {
     top: 56px;
     height: calc(50% - 64px);
     width: calc(100% - 16px);
-  }
-
-  #resizer {
-    display: none;
   }
 
   #output {
