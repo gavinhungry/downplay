@@ -80,6 +80,14 @@ window.downplay = window.downplay || (function($) {
       downplay.print();
     });
 
+    $(document).on('keydown', function(e) {
+      if (e.ctrlKey && !e.altKey && !e.shiftKey && e.keyCode === 80) {
+        e.preventDefault();
+
+        downplay.print();
+      }
+    });
+
     init = true;
   };
 
