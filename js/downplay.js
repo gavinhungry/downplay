@@ -3,6 +3,10 @@ window.downplay = window.downplay || (function($) {
 
   var downplay = {};
 
+  marked.setOptions({
+    highlight: code => hljs.highlightAuto(code).value
+  });
+
   // worst polyfill ever
   var localStorage = window.localStorage || {
     getItem: function(){},
