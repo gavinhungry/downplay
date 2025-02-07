@@ -2,7 +2,7 @@ Downplay
 ========
 Downplay is a [Markdown](http://daringfireball.net/projects/markdown/)
 ([GFM](https://help.github.com/articles/github-flavored-markdown)) editor
-created by [gavinhungry](https://twitter.com/gavinhungry).
+created by [gavinhungry](https://gavinhungry.com).
 
 How To Use
 ----------
